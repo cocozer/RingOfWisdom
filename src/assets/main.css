@@ -1,35 +1,54 @@
 @import './base.css';
 
+@font-face { font-family: EldenFont; 
+  src: url('OptimusPrinceps.ttf'); } 
+
+@font-face { font-family: EldenTitleFont; 
+  src: url('MantiniaRegular.otf'); } 
+
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  font-family: EldenFont;
+  font-size:1.2rem;
   font-weight: normal;
+  padding: 0;
+  margin:0;
+  width:100%;
 }
 
+.greytransparent {
+  padding-top:3rem;
+  background-color:#212121c4;
+  min-height:90vh;
+}
+
+body {
+    margin:0;
+    padding:0;
+}
+html {
+    width:100%;
+}
+main {
+  margin:0;
+  width:100%;
+  min-height:90vh;
+}
 a,
-.green {
+.gold {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #C19D53;
   transition: 0.4s;
   padding: 3px;
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsl(52, 67%, 13%);
   }
 }
 
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
   }
 }
