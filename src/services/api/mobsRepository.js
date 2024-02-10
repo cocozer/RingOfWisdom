@@ -19,7 +19,6 @@ export default async function getMobsData() {
 
     // Fusion des données des créatures et des boss
     const allMobsData = creaturesData.data.concat(bossesData.data);
-    console.log(allMobsData);
     return allMobsData;
   } catch (error) {
     console.error(error);

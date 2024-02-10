@@ -2,9 +2,9 @@
   <div class="background">
     <div class="greytransparent">
       <h2>Creatures</h2>
-      <CreatureSearch :searchText="searchText" v-on:search-creature="toto" ></CreatureSearch>
+      <CreatureSearch :searchText="searchText" v-on:search-creature="search" ></CreatureSearch>
       <div class="creatures-gallery">
-        <MobCard v-for="creature in mobsData" :key="creature.id" :name="creature.name" :image="creature.image" :boss="creature.boss"/>
+        <MobCard v-for="mob in filteredCreatures" :key="mob.id" :creature="mob" :filteredCreatures="filteredCreatures"/>
       </div>
     </div>
   </div>
@@ -25,13 +25,15 @@ export default {
     return {
       mobsData: [],
       searchText: '',
+      sortOrder: 'asc'
     }
   },
   created: function() {
     this.retrieveMobsData()
   },
+
   methods: {
-    toto(value) {
+    search(value) {
        this.searchText = value
     },
     async retrieveMobsData() {
@@ -42,6 +44,25 @@ export default {
     },
     clearSearch : function(event) {
       this.searchText="";
+    }
+  },
+  computed: {
+    filteredCreatures() {
+      let filtered = this.mobsData.filter(creature => {
+        return creature.name.toLowerCase().includes(this.searchText.toLowerCase());
+      });
+
+      if (this.sortOrder === 'asc') {
+        filtered.sort((a, b) => {
+          return a.name.localeCompare(b.name);
+        });
+      } else if (this.sortOrder === 'desc') {
+        filtered.sort((a, b) => {
+          return b.name.localeCompare(a.name);
+        });
+      }
+
+      return filtered;
     }
   }
 }

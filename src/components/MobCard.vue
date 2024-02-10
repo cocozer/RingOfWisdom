@@ -1,8 +1,8 @@
 <template>
   <div class="mob-card">
-    <img class="picture" v-bind:src="image"/>
+    <img class="picture" v-bind:src="creature.image || defaultImage"/>
     <div>
-      <h2 class="name">{{name}}</h2>
+      <h2 class="name">{{creature.name}}</h2>
       <!-- <p class="type">{{type}}</p> -->
     </div>  
   </div>
@@ -12,10 +12,16 @@
 export default {
   name: 'MobCard',
   props: {
-    id: {String, Number},
-    name: { type: String, required: true},
-    image: {type: String, default:"https://image.api.playstation.com/vulcan/ap/rnd/202107/1612/Y5RHNmzAtc6sRYwZlYiKHAxN.png"},
-    boss: {String, Number},
+    creature: {
+      type: Object,
+      required: true,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      defaultImage: 'https://image.api.playstation.com/vulcan/ap/rnd/202107/1612/Y5RHNmzAtc6sRYwZlYiKHAxN.png'
+    };
   }
 }
 </script>
