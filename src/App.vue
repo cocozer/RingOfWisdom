@@ -9,10 +9,6 @@
 <script>
 import HeaderComponent from './components/Header.vue';
 import FooterComponent from './components/Footer.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-library.add(fab)
 
 export default {
   components: {

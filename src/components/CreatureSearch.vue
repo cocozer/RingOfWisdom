@@ -70,11 +70,11 @@ export default {
 .close::after {
   content: '';
   position: absolute;
-  height: 1px; /* Hairline thickness */
+  height: 1px;
   width: 100%;
   top: 50%;
   left: 0;
-  margin-top: -1px; /* Center vertically */
+  margin-top: -1px;
   background: white;
 }
 
@@ -88,5 +88,12 @@ export default {
 button {
   background:none;
   border:none;
+}
+
+@media only screen and (max-width: 650px) {
+  .creature-search input {
+    width:100%;
+    margin:0;
+  }
 }
 </style>

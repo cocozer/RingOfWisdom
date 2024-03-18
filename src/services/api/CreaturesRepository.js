@@ -18,10 +18,18 @@ export default async function getMobsData() {
     });
 
     // Fusion des données des créatures et des boss
-    const allMobsData = creaturesData.data.concat(bossesData.data);
-    return allMobsData;
+    const allCreaturesData = creaturesData.data.concat(bossesData.data);
+    return allCreaturesData;
   } catch (error) {
     console.error(error);
     throw error;
+  }
+}
+
+export async function getCreatureDetails() {
+  if (this.$route.query.data) {
+    const data = JSON.parse(this.$route.query.data);
+    // eslint-disable-next-line vue/no-mutating-props
+    this.recipe = data;
   }
 }
