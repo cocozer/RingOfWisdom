@@ -25,7 +25,7 @@ export default {
   }
 }
 </script>
-  
+
 <style scoped>
 #sort-button {
   align-self: flex-end;
