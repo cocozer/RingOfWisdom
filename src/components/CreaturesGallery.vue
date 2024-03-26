@@ -8,7 +8,7 @@
       </div>
       <div class="sortSlider">
         <label for="showBosses" class="boss-checkbox-label">Sort By HP (only for Bosses)</label>
-        <input type="checkbox" v-model="toggleSortByHP" class="boss-checkbox" />
+        <input type="checkbox" v-model="toggleSortByHP" class="boss-checkbox" :checked="toggleSortByHP" />
         <CreatureSortSlider v-model:sortMinHP="sortMinHP" v-model:sortMaxHP="sortMaxHP"></CreatureSortSlider>
       </div>
       <div class="creatures-gallery">
@@ -38,7 +38,7 @@ export default {
       creaturesData: [],
       searchText: '',
       sortOrder: localStorage.getItem("creaturesSortType") || "AZName",
-      toggleSortByHP: localStorage.getItem("creatureToggleSortByHP") || false,
+      toggleSortByHP: JSON.parse(localStorage.getItem("creatureToggleSortByHP")) || false,
       sortMinHP: localStorage.getItem("creaturesSortMinHP") || 0,
       sortMaxHP: localStorage.getItem("creaturesSortMaxHP") || 30000,
       filteredCreatures: [] // Filtered creatures (saved because of the toggle sort by HP)
@@ -88,6 +88,7 @@ export default {
       }
 
       if (this.toggleSortByHP) {
+        console.log("toggleSortByHP:", this.toggleSortByHP);
         filtered = filtered.filter(creature => {
           if(creature.healthPoints === undefined) { // Pour enlever les créatures qui n'ont pas de champ HP
             return false;

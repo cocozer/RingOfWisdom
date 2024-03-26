@@ -73,6 +73,12 @@ footer {
   }
   .social-medias a{
     font-size: 2rem;
+    margin:1rem;
+  }
+
+  .social-medias {
+    display:flex;
+    justify-content:center;
   }
 }
 
